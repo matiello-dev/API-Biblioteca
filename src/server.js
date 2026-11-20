@@ -1,5 +1,6 @@
 import express from "express";
 import { fileURLToPath } from "node:url";
+import * as livroController from "./controller/livroController.js";
 
 import pool from "../src/database/conexao.js";
 
@@ -45,4 +46,4 @@ export default app;
 
 
 
-app.get("/livros", (request, response)=> {})
+app.get("/livros", livroController.listarLivros);
