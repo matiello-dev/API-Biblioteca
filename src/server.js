@@ -35,6 +35,9 @@ app.get("/status", async (request, response) => {
 const { rows } = await pool.query("SELECT now() AS agora");
 response.json({ ok: true, banco: rows[0].agora });
 });
+app.get("/livros", livroController.listarLivros); //lista todos os livros
+app.get("/livros/:id", livroController.obterLivroPorId); //obtem um livro pelo id
+app.post("/livros", livroController.criarLivro); //cria um livro 
 
 if (process.argv[1] === fileURLToPath(import.meta.url)) {
   app.listen(PORTA, () => {
