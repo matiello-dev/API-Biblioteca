@@ -25,9 +25,10 @@ export async function criarLivroCompleto(livro, autorIds) {
   return await livroRepository.criarLivroCompleto(livroCriado, autorIds);
 }
 
-export async function alterarLivro(id, dados) {
 
-export async function deletarLivro(id) {
+
+export async function alterarLivro(id,dados) {
+
   const livro = await livroRepository.obterLivroPorId(id);
   if (!livro) {
     const erro = new Error("Livro não encontrado");
@@ -45,4 +46,8 @@ export async function deletarLivro(id) {
     throw erro;
   }
   await livroRepository.deletarLivro(id);
+}
+export async function obterExemplaresLivro(id){
+  console.log("chegou logic")
+  return await livroRepository.obterExemplaresLivros(id)
 }
