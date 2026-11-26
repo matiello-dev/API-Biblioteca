@@ -1,6 +1,7 @@
 import express from "express";
 import { fileURLToPath } from "node:url";
 import * as livroController from "./controller/livroController.js";
+import * as leitorController from "./controller/leitorController.js";
 
 import pool from "../src/database/conexao.js";
 
@@ -36,6 +37,7 @@ const { rows } = await pool.query("SELECT now() AS agora");
 response.json({ ok: true, banco: rows[0].agora });
 });
 app.get("/livros", livroController.listarLivros); //lista todos os livros
+app.get("/leitores", leitorController.listarLeitores); //lista todos os leitores
 app.get("/livros/:id", livroController.obterLivroPorId); //obtem um livro pelo id
 app.post("/livros", livroController.criarLivro); //cria um livro 
 app.patch("/livros/:id", livroController.alterarLivro); //altera um livro pelo id
