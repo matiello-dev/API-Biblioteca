@@ -25,10 +25,7 @@ export async function criarLivroCompleto(livro, autorIds) {
   return await livroRepository.criarLivroCompleto(livroCriado, autorIds);
 }
 
-
-
-export async function alterarLivro(id,dados) {
-
+export async function alterarLivro(id, dados) {
   const livro = await livroRepository.obterLivroPorId(id);
   if (!livro) {
     const erro = new Error("Livro não encontrado");

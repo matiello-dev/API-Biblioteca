@@ -1,5 +1,5 @@
 export class Livro {
-    cosntructor(titulo, isbn, ano, editoraId) {
+    constructor(titulo, isbn, ano, editoraId) {
         if(!titulo || !isbn || !ano || !editoraId) {
             const erro = new Error("Todos os campos são obrigatórios");
             erro.status = 400;
