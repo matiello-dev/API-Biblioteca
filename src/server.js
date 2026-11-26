@@ -38,6 +38,8 @@ response.json({ ok: true, banco: rows[0].agora });
 app.get("/livros", livroController.listarLivros); //lista todos os livros
 app.get("/livros/:id", livroController.obterLivroPorId); //obtem um livro pelo id
 app.post("/livros", livroController.criarLivro); //cria um livro 
+app.patch("/livros/:id", livroController.alterarLivro); //altera um livro pelo id
+app.delete("/livros/:id", livroController.deletarLivro); //deleta um livro pelo id
 
 if (process.argv[1] === fileURLToPath(import.meta.url)) {
   app.listen(PORTA, () => {

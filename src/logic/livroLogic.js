@@ -24,3 +24,25 @@ export async function criarLivroCompleto(livro, autorIds) {
   livroCriado = await livroRepository.criarLivroSemAutor(livroCriado);
   return await livroRepository.criarLivroCompleto(livroCriado, autorIds);
 }
+
+export async function alterarLivro(id, dados) {
+
+export async function deletarLivro(id) {
+  const livro = await livroRepository.obterLivroPorId(id);
+  if (!livro) {
+    const erro = new Error("Livro não encontrado");
+    erro.status = 404;
+    throw erro;
+  }
+  await livroRepository.alterarLivro(id, dados);
+}
+
+export async function deletarLivro(id) {
+  const livro = await livroRepository.obterLivroPorId(id);
+  if (!livro) {
+    const erro = new Error("Livro não encontrado");
+    erro.status = 404;
+    throw erro;
+  }
+  await livroRepository.deletarLivro(id);
+}
