@@ -64,4 +64,3 @@ export async function deletarLivro(request, response) {
     response.status(error.status || 500).json({ error: "Erro ao deletar livro" });
   }
 }
-
