@@ -64,3 +64,22 @@ export async function deletarLivro(request, response) {
     response.status(error.status || 500).json({ error: "Erro ao deletar livro" });
   }
 }
+
+export async function obterExemplaresLivros(request, response){
+   try {
+    console.log("chegou controler")
+    const { id } = request.params;
+    if(id === undefined || isNaN(id)) {
+      return response.status(400).json({ error: "ID inválido" });
+    }
+    const livro = await livroLogic.obterExemplaresLivro(id);
+    if (!livro) {
+      return response.status(404).json({ error: "Livro não encontrado" });
+    }
+    response.json(livro);
+  } catch (error) {
+    console.error("Erro ao obter livro:", error);
+    response.status(error.status || 500).json({ error: "Erro ao obter livro" });
+  }
+}
+

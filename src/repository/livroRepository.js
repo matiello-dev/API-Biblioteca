@@ -94,3 +94,19 @@ export async function deletarLivro(id) {
   await pool.query("DELETE FROM livro_autor WHERE livro_id = $1", [id]);
   await pool.query("DELETE FROM livros WHERE id = $1", [id]);
 }
+
+
+export async function obterExemplaresLivros(id) {
+  const { rows } = await pool.query(
+    `SELECT
+       e.id,
+       e.codigo,
+       e.estado
+     FROM exemplares e
+     WHERE e.livro_id = $1
+     ORDER BY e.codigo`,
+    [id]
+  );
+
+  return rows;
+}

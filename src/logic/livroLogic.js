@@ -44,3 +44,7 @@ export async function deletarLivro(id) {
   }
   await livroRepository.deletarLivro(id);
 }
+export async function obterExemplaresLivro(id){
+  console.log("chegou logic")
+  return await livroRepository.obterExemplaresLivros(id)
+}
