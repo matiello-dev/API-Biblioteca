@@ -42,6 +42,7 @@ app.get("/livros/:id", livroController.obterLivroPorId); //obtem um livro pelo i
 app.post("/livros", livroController.criarLivro); //cria um livro 
 app.patch("/livros/:id", livroController.alterarLivro); //altera um livro pelo id
 app.delete("/livros/:id", livroController.deletarLivro); //deleta um livro pelo id
+app.post("/emprestimos", livroController.emprestarLivro); //empresta um livro
 app.get("/livros/:id/exemplares", livroController.obterExemplaresLivros)// obter exemplares livros
 
 if (process.argv[1] === fileURLToPath(import.meta.url)) {
